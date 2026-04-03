@@ -9,7 +9,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { PricingTable } from "@clerk/nextjs";
+// ❌ Removed PricingTable import
 
 export default function UpgradeModal({ isOpen, onClose, trigger = "limit" }) {
   return (
@@ -20,6 +20,7 @@ export default function UpgradeModal({ isOpen, onClose, trigger = "limit" }) {
             <Sparkles className="w-6 h-6 text-purple-500" />
             <DialogTitle className="text-2xl">Upgrade to Pro</DialogTitle>
           </div>
+
           <DialogDescription>
             {trigger === "header" && "Create Unlimited Events with Pro! "}
             {trigger === "limit" && "You've reached your free event limit. "}
@@ -28,18 +29,17 @@ export default function UpgradeModal({ isOpen, onClose, trigger = "limit" }) {
           </DialogDescription>
         </DialogHeader>
 
-        {/* Pricing Cards */}
-        <PricingTable
-          checkoutProps={{
-            appearance: {
-              elements: {
-                drawerRoot: {
-                  zIndex: 2000,
-                },
-              },
-            },
-          }}
-        />
+        {/* ✅ Simple placeholder instead of PricingTable */}
+        <div className="text-center py-8 space-y-3">
+          <p className="text-lg font-semibold">Pro Features 🚀</p>
+          <p className="text-muted-foreground text-sm">
+            - Unlimited event creation  
+            <br />
+            - Custom theme colors  
+            <br />
+            - Premium features (coming soon)
+          </p>
+        </div>
 
         {/* Footer */}
         <div className="flex gap-3">
@@ -50,4 +50,4 @@ export default function UpgradeModal({ isOpen, onClose, trigger = "limit" }) {
       </DialogContent>
     </Dialog>
   );
-}
+} 
